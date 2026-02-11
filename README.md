@@ -13,20 +13,6 @@ else
 end
 _G.firsttimeinjection = false
 
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-local userInputService = game:GetService("UserInputService")
-
-
-local screenGui = playerGui:FindFirstChild("MyPersistentScreenGui")
-if not screenGui then
-    screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "MyPersistentScreenGui"
-    screenGui.Parent = playerGui
-end
-screenGui.ResetOnSpawn = false
-
-
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
