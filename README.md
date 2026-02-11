@@ -501,7 +501,7 @@ end
 local WhitelistedMouse = {Enum.UserInputType.MouseButton1, Enum.UserInputType.MouseButton2,Enum.UserInputType.MouseButton3}
 local BlacklistedKeys = {Enum.KeyCode.Unknown,Enum.KeyCode.W,Enum.KeyCode.A,Enum.KeyCode.S,Enum.KeyCode.D,Enum.KeyCode.Up,Enum.KeyCode.Left,Enum.KeyCode.Down,Enum.KeyCode.Right,Enum.KeyCode.Slash,Enum.KeyCode.Tab,Enum.KeyCode.Backspace,Enum.KeyCode.Escape}
 
-local freeMouse = Create("TextButton", {Name = "FMouse", Size = UDim2.new(0,0,0,0), BackgroundTransparency = 1, Text = "", Position = UDim2.new(0,0,0,0), Modal = true, Parent = Orion, Visible = false})
+local freeMouse = Create("TextButton", {Name = "FMouse", Size = UDim2.new(0,0,0,0), BackgroundTransparency = 1, Text = "", Position = UDim2.new(0,0,0,0), Modal = false, Parent = Orion, Visible = false})
 local mouselock = false
 
 local function UnlockMouse(Value)
@@ -512,14 +512,17 @@ local function UnlockMouse(Value)
 			while mouselock do
 				UserInputService.MouseIconEnabled = Value
 				freeMouse.Visible = Value
+				freeMouse.Modal = Value
 				task.wait()
 			end
 
 			UserInputService.MouseIconEnabled = false
 			freeMouse.Visible = false
+			freeMouse.Modal = false
 		end)
 	else
 		mouselock = false
+		freeMouse.Modal = false
 	end
 end
 
